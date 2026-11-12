@@ -1,0 +1,234 @@
+
+
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background: #f0f5f8;
+  color: #243746;
+  min-height: 100vh;
+}
+
+
+.conteudo {
+  max-width: 700px;
+  margin: 40px auto;
+  padding: 32px;
+  background: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 6px 24px rgba(25, 70, 90, 0.08);
+  border: 1px solid #e1ebf0;
+}
+
+.conteudo h1 {
+  font-size: 1.7rem;
+  color: #14566b;
+  margin-bottom: 8px;
+}
+
+.conteudo p {
+  color: #647b89;
+  font-size: 0.92rem;
+  margin-bottom: 20px;
+}
+
+
+/* Botão para reabrir preferências */
+
+.conteudo button {
+  background: #e8f2f5;
+  color: #14566b;
+  border: 1px solid #c7dce4;
+  padding: 10px 18px;
+  border-radius: 8px;
+  font-weight: 700;
+  cursor: pointer;
+  font-size: 0.84rem;
+  transition: 0.2s;
+}
+
+.conteudo button:hover {
+  background: #d7e9ef;
+  border-color: #9fc3d1;
+}
+
+
+
+.banner {
+  position: fixed;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  max-width: 500px;
+  width: 90%;
+  background: #17475a;
+  color: #ffffff;
+  padding: 24px;
+  border-radius: 16px;
+  box-shadow: 0 12px 40px rgba(15, 45, 60, 0.3);
+  z-index: 100;
+}
+
+.banner h2 {
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+  color: #ffffff;
+}
+
+.banner p {
+  font-size: 0.9rem;
+  color: #d6e7ed;
+  line-height: 1.5;
+  margin-bottom: 16px;
+}
+
+
+.banner label {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 11px 0;
+  font-size: 0.9rem;
+  color: #f1f7f9;
+  cursor: pointer;
+  border-bottom: 1px solid rgba(255,255,255,0.12);
+}
+
+
+
+.banner label input[type="checkbox"] {
+  width: 40px;
+  height: 20px;
+  accent-color: #38bdf8;
+  cursor: pointer;
+}
+
+.banner label input[type="checkbox"]:disabled {
+  cursor: not-allowed;
+  opacity: 0.65;
+}
+
+
+
+.banner-botoes {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-top: 18px;
+}
+
+.banner-botoes button {
+  flex: 1;
+  min-width: 120px;
+  padding: 11px 12px;
+  border-radius: 8px;
+  border: 1px solid transparent;
+  font-weight: 700;
+  font-size: 0.8rem;
+  cursor: pointer;
+  font-family: inherit;
+  background: #38a3b8;
+  color: #ffffff;
+  transition: 0.2s;
+}
+
+.banner-botoes button:hover {
+  background: #27869a;
+}
+
+.banner-botoes button:nth-child(2) {
+  background: #ffffff;
+  color: #17475a;
+}
+
+.banner-botoes button:nth-child(2):hover {
+  background: #e4f0f4;
+}
+
+
+.banner-botoes button:nth-child(3) {
+  background: #287c68;
+}
+
+.banner-botoes button:nth-child(3):hover {
+  background: #206653;
+}
+
+
+.painel-status {
+  max-width: 500px;
+  margin: 20px auto;
+  padding: 20px;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 16px rgba(25, 70, 90, 0.07);
+  border: 1px solid #e1ebf0;
+  font-size: 0.9rem;
+}
+
+.painel-status h3 {
+  color: #14566b;
+  font-size: 1rem;
+  margin-bottom: 12px;
+}
+
+.painel-status p {
+  padding: 9px 0;
+  border-bottom: 1px solid #edf2f5;
+}
+
+.painel-status p:last-child {
+  border-bottom: none;
+}
+
+
+
+.ativo {
+  color: #16805d;
+  font-weight: 700;
+}
+
+.bloqueado {
+  color: #c45b5b;
+  font-weight: 700;
+}
+
+
+.oculto {
+  display: none !important;
+}
+
+
+
+@media (max-width: 550px) {
+
+  .conteudo {
+    margin: 20px 12px;
+    padding: 22px;
+  }
+
+  .banner {
+    bottom: 10px;
+    padding: 18px;
+    max-height: 90vh;
+    overflow-y: auto;
+  }
+
+  .banner-botoes {
+    flex-direction: column;
+  }
+
+  .banner-botoes button {
+    width: 100%;
+  }
+
+  .painel-status {
+    margin: 20px 12px;
+  }
+
+}

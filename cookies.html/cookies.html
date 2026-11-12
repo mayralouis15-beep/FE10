@@ -1,0 +1,275 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Correção de Bugs - Cookies</title>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f1f5f9;
+            padding: 30px 15px;
+            margin: 0;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: auto;
+        }
+
+        .titulo-principal {
+            color: #1e1b4b;
+            margin-bottom: 25px;
+        }
+
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(
+                auto-fit,
+                minmax(280px, 1fr)
+            );
+            gap: 20px;
+        }
+
+        .demo {
+            background: #ffffff;
+            border: 2px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 20px;
+        }
+
+        .demo h3 {
+            font-size: 1rem;
+            margin-top: 0;
+            margin-bottom: 10px;
+            color: #1e1b4b;
+        }
+
+        .demo p {
+            font-size: 0.86rem;
+            color: #64748b;
+            margin-bottom: 14px;
+        }
+
+        .demo label {
+            display: block;
+            font-weight: 700;
+            font-size: 0.82rem;
+            color: #334155;
+            margin-bottom: 5px;
+        }
+
+        .demo input {
+            width: 100%;
+            padding: 9px 12px;
+            border: 1px solid #cbd5e1;
+            border-radius: 6px;
+            font-size: 0.9rem;
+            margin-bottom: 10px;
+        }
+
+        .demo button {
+            background: #7c3aed;
+            color: #ffffff;
+            border: none;
+            padding: 9px 16px;
+            border-radius: 8px;
+            font-weight: 700;
+            cursor: pointer;
+            font-size: 0.85rem;
+        }
+
+        .demo button:hover {
+            background: #6d28d9;
+        }
+
+        .btns {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin-bottom: 10px;
+        }
+
+        .terminal {
+            background: #0b0518;
+            color: #a5f3fc;
+            padding: 10px 14px;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.78rem;
+            min-height: 40px;
+            margin-top: 12px;
+            overflow-wrap: anywhere;
+        }
+    </style>
+</head>
+
+<body>
+
+    <main class="container">
+
+        <h1 class="titulo-principal">
+            Bugs corrigidos - Cookies
+        </h1>
+
+        <div class="cards">
+
+            <section class="demo">
+
+                <h3>Bug 1 - Ler cookies</h3>
+
+                <p>
+                    Este componente mostra os cookies atuais.
+                </p>
+
+                <button onclick="lerCookies()">
+                    Ler cookies agora
+                </button>
+
+                <div
+                    class="terminal"
+                    id="resultado-leitura"
+                    aria-live="polite">
+                </div>
+
+            </section>
+
+
+            <section class="demo">
+
+                <h3>Bug 2 - Apagar tema</h3>
+
+                <label for="tema-apagar">
+                    Valor do tema
+                </label>
+
+                <input
+                    type="text"
+                    id="tema-apagar"
+                    value="escuro">
+
+                <div class="btns">
+
+                    <button onclick="gravarTemaParaApagar()">
+                        Gravar tema
+                    </button>
+
+                    <button onclick="apagarTema()">
+                        Apagar tema
+                    </button>
+
+                </div>
+
+                <div
+                    class="terminal"
+                    id="resultado-apagar"
+                    aria-live="polite">
+                </div>
+
+            </section>
+
+
+            <section class="demo">
+
+                <h3>Bug 3 - Gravar tema</h3>
+
+                <label for="tema-gravar">
+                    Valor do tema
+                </label>
+
+                <input
+                    type="text"
+                    id="tema-gravar"
+                    value="escuro">
+
+                <button onclick="gravarTema()">
+                    Gravar tema
+                </button>
+
+                <div
+                    class="terminal"
+                    id="resultado-gravar"
+                    aria-live="polite">
+                </div>
+
+            </section>
+
+        </div>
+
+    </main>
+
+
+    <script>
+
+        /*BUG 1*/
+
+        function lerCookies() {
+
+            const atual = document.cookie;
+
+            document.getElementById("resultado-leitura")
+                .textContent = atual
+                    ? "Cookies: " + atual
+                    : "(nenhum cookie)";
+
+        }
+
+
+        /*BUG 2*/
+
+        function apagarTema() {
+
+            document.cookie =
+                "tema=; max-age=0; path=/; SameSite=Lax";
+
+            document.getElementById("resultado-apagar")
+                .textContent = "Cookie tema apagado.";
+
+        }
+
+
+        function gravarTemaParaApagar() {
+
+            const valor = document.getElementById(
+                "tema-apagar"
+            ).value;
+
+            document.cookie =
+                "tema=" + encodeURIComponent(valor) +
+                "; max-age=3600; path=/; SameSite=Lax";
+
+            document.getElementById("resultado-apagar")
+                .textContent = "Cookie tema=" + valor + " gravado.";
+
+        }
+
+        /*BUG 3*/
+
+        function gravarTema() {
+
+            const valor = document.getElementById(
+                "tema-gravar"
+            ).value;
+
+            document.cookie =
+                "tema=" + encodeURIComponent(valor) +
+                "; max-age=3600; path=/; SameSite=Lax";
+
+            document.getElementById("resultado-gravar")
+                .textContent = "Cookie tema=" + valor + " gravado.";
+
+        }
+
+    </script>
+
+</body>
+</html>
